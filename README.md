@@ -6,8 +6,8 @@ prerequisite:
 
 algorithms folder contains the:
 
-	- PCA_R1 and PCA_R2 re-implemented in Python (https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0152616)
-	- our WPCA and WPCAG
+	- PCA_R2 re-implemented in Python (https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0152616)
+	- our LWPCA and LWPCA for missing whole frame
 
 Data and parameter before runing:
 	
@@ -36,7 +36,3 @@ Genrerate missing matrix:
 		
 		- generate_mm_single.py (generate a single specific missing marker in the testing sample)
 		- generate_mm_multiple.py (generate multiple missing markers in the testing sample)
-
-visualization functions in plot_visual_files:
-		
-		detail will be updated.
