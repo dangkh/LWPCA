@@ -70,49 +70,49 @@ def get_point(Data, frame, joint):
     return point
 
 
-def read_tracking_data3D(data_dir, patch):
-    print("reading source: ", data_dir, " patch: ", patch)
+# def read_tracking_data3D(data_dir, patch):
+#     print("reading source: ", data_dir, " patch: ", patch)
 
-    Tracking3D = []
-    f = open(data_dir, 'r')
-    for line in f:
-        elements = line.split(',')
-        Tracking3D.append(list(map(float, elements)))
-    f.close()
+#     Tracking3D = []
+#     f = open(data_dir, 'r')
+#     for line in f:
+#         elements = line.split(',')
+#         Tracking3D.append(list(map(float, elements)))
+#     f.close()
 
-    Tracking3D = np.array(Tracking3D)  # list can not read by index while arr can be
-    Tracking3D = np.squeeze(Tracking3D)
-    #print('original data', Tracking3D.shape)
+#     Tracking3D = np.array(Tracking3D)  # list can not read by index while arr can be
+#     Tracking3D = np.squeeze(Tracking3D)
+#     #print('original data', Tracking3D.shape)
 
-    Tracking3D = Tracking3D.astype(float)
-    Tracking3D = Tracking3D[patch[0]: patch[1]]
-    #print('patch data', Tracking3D.shape)
+#     Tracking3D = Tracking3D.astype(float)
+#     Tracking3D = Tracking3D[patch[0]: patch[1]]
+#     #print('patch data', Tracking3D.shape)
 
-    Tracking3D = remove_joint(Tracking3D)
-    restore = np.copy(Tracking3D)
-    return Tracking3D, restore
+#     Tracking3D = remove_joint(Tracking3D)
+#     restore = np.copy(Tracking3D)
+#     return Tracking3D, restore
 
 
-def read_tracking_data3D_without_RJ(data_dir, patch):
-    #print("reading source: ", data_dir, " patch: ", patch)
+# def read_tracking_data3D_without_RJ(data_dir, patch):
+#     #print("reading source: ", data_dir, " patch: ", patch)
 
-    Tracking3D = []
-    f = open(data_dir, 'r')
-    for line in f:
-        elements = line.split(' ')
-        Tracking3D.append(list(map(float, elements)))
-    f.close()
+#     Tracking3D = []
+#     f = open(data_dir, 'r')
+#     for line in f:
+#         elements = line.split(' ')
+#         Tracking3D.append(list(map(float, elements)))
+#     f.close()
 
-    Tracking3D = np.array(Tracking3D)  # list can not read by index while arr can be
-    Tracking3D = np.squeeze(Tracking3D)
-    #print('original data', Tracking3D.shape)
+#     Tracking3D = np.array(Tracking3D)  # list can not read by index while arr can be
+#     Tracking3D = np.squeeze(Tracking3D)
+#     #print('original data', Tracking3D.shape)
 
-    Tracking3D = Tracking3D.astype(float)
-    Tracking3D = Tracking3D[patch[0]: patch[1]]
-    #print('patch data', Tracking3D.shape)
+#     Tracking3D = Tracking3D.astype(float)
+#     Tracking3D = Tracking3D[patch[0]: patch[1]]
+#     #print('patch data', Tracking3D.shape)
 
-    restore = np.copy(Tracking3D)
-    return Tracking3D, restore
+#     restore = np.copy(Tracking3D)
+#     return Tracking3D, restore
 
 
 def setting_rank(eigen_vector):

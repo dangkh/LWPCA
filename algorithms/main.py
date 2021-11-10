@@ -10,7 +10,7 @@ def WPCA_local(source_data, test_data):
     return result
 
 def LWPCA_wholeFrame(source_data, test_data):
-    interpolation = interpolation_MaskWPCA_wholeFrame(source_data, test_data)
+    interpolation = interpolation_LWPCA_wholeFrame(source_data, test_data)
     result = interpolation.result
     return result
 

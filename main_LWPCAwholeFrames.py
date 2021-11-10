@@ -54,7 +54,7 @@ def process_hub(data=None):
             order_fol.append(test_name)
             resCF = []
             test_reference = arg.missing_index
-            number_test = 50
+            number_test = 10
             print("******************************************************************************************")
             print("**************************************** STARTING ****************************************")
             print("******************************************************************************************")
@@ -68,9 +68,9 @@ def process_hub(data=None):
                 A1zero[np.where(missing_matrix == 0)] = 0
             
                 timecounter = datetime.now()
-                A1_star5 = LWPCA_wholeFrame(np.copy(A_N3_source_added), np.copy(A1zero))
+                A1_star = LWPCA_wholeFrame(np.copy(dataCollection), np.copy(A1zero))
                 value = np.around(calculate_mae_matrix(
-                    A1[np.where(A1zero == 0)] - A1_star5[np.where(A1zero == 0)]), decimals=17)
+                    A1[np.where(A1zero == 0)] - A1_star[np.where(A1zero == 0)]), decimals=17)
                 print(str(datetime.now() - timecounter))
 
                 resCF.append(value)
@@ -88,7 +88,7 @@ if __name__ == '__main__':
     f = open(savingLocation + 'result_wholeFrame.txt', "w")
     print("reference source:")
     datas = arg.datas
-    Tracking3D, _ = read_tracking_data3D_v2(arg.data_link)
+    Tracking3D, _ = read_tracking_data3D(arg.data_link)
     Tracking3D = Tracking3D.astype(float)
     result, order_fol = process_hub()
     # result, order_fol = process_hub(data = datas)

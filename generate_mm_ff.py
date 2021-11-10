@@ -8,7 +8,7 @@ from datetime import datetime
 import os
 
 def generate_missing_frame(n, m):
-	frames = 9
+	frames = 12
 	matrix = np.ones((n,m))
 	# joints = np.arange(m//3)
 	counter = 0
@@ -47,11 +47,11 @@ def process_gap_missing():
 	for times in range(50):
 		print("current: ", times)
 		missing_matrix = generate_missing_frame(sample.shape[0], sample.shape[1])		
-		np.savetxt(test_location+"ff/"+str(times)+ ".txt", missing_matrix, fmt = "%d")
+		np.savetxt(test_location+"fullFrame/"+str(times)+ ".txt", missing_matrix, fmt = "%d")
 	return 
 
 if __name__ == '__main__':
 
-	Tracking3D, _  = read_tracking_data3D_v2(arg.data_link)
+	Tracking3D, _  = read_tracking_data3D(arg.data_link)
 	Tracking3D = Tracking3D.astype(float)
 	process_gap_missing()
