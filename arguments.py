@@ -9,46 +9,46 @@ class arguments(argparse.Namespace):
     
 
     # """ CMU config """
-    # missing_index = [50, 450]
-    # # current result
-    # inner_testing = [[250, 650], [450, 850], [1050, 1450], [1450, 1850]]
-    # data_link = "./data3D/CMU2.txt"
+    missing_index = [50, 450]
+    # current result
+    inner_testing = [[250, 650], [450, 850], [1050, 1450], [1450, 1850]]
+    data_link = "./data3D/CMU2.txt"
     
-    # collection_link = ["./data3D/135_01.txt", "./data3D/135_03.txt"]
-    # outter_testing = [[1450, 1850], [1450, 1850]]
-    # # single case
-    # # weightScale = 2000
-    # # MMweight = 0.001
+    collection_link = ["./data3D/135_01.txt", "./data3D/135_03.txt"]
+    outter_testing = [[1450, 1850], [1450, 1850]]
+    # single case
+    # weightScale = 2000
+    # MMweight = 0.001
 
-    # # mul case
-    # # weightScale = 2000
-    # # MMweight = 0.02
-    # # others = 0.001
+    # mul case
+    # weightScale = 2000
+    # MMweight = 0.02
+    # others = 0.001
     
 
     
     """ HDM config """
-    missing_index = [150, 550]
+    # missing_index = [150, 550]
     
-    inner_testing = [[350, 750], [550, 950], [1050, 1450], [1450, 1850]]
-    data_link = "./data3D/HDM3.txt"
-    collection_link = ["./data3D/135_01.txt", "./data3D/135_03.txt"]
-    outter_testing = [[1450, 1850], [1450, 1850]]
-    # single case
-    # weightScale = 500
-    # MMweight = 0.001
+    # inner_testing = [[350, 750], [550, 950], [1050, 1450], [1450, 1850]]
+    # data_link = "./data3D/HDM3.txt"
+    # collection_link = ["./data3D/135_01.txt", "./data3D/135_03.txt"]
+    # outter_testing = [[1450, 1850], [1450, 1850]]
+    # # single case
+    # # weightScale = 500
+    # # MMweight = 0.001
 
-    # mul case
-    # weightScale = 500
-    # MMweight = 0.02
-    # others = 0.001
+    # # mul case
+    # # weightScale = 500
+    # # MMweight = 0.02
+    # # others = 0.001
 
 
     tmp = []
     counter = 0
     for x in collection_link:
         print("reading source: ", x)
-        source, _ = read_tracking_data3D_v2(x)
+        source, _ = read_tracking_data3D(x)
         source = source.astype(float)
         source = source[outter_testing[counter][0]:outter_testing[counter][1]]
         counter += 1
@@ -59,8 +59,8 @@ class arguments(argparse.Namespace):
 
     
     test_link = "./test/"
-    save_dir = "./list_result/"
-    default_test_link = "./test/th_out/2.txt"
+    save_dir = "./result/"
+    default_test_link = "./test/fullFrame/2.txt"
 
 
 arg = arguments

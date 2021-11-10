@@ -30,14 +30,11 @@ def discrete_matshow(data):
     #tell the colorbar to tick at integers
     cax = plt.colorbar(mat, ticks=np.arange(np.min(data),np.max(data)+1))
 
-    # plt.show()
-    plt.savefig('single.eps', format='eps')
+    plt.show()
+    # plt.savefig('single.eps', format='eps')
 
 
-
-# test_array = np.arange(100 * 100).reshape(100, 100)
-
-matrix = load_missing("./test/1/49.txt")
+matrix = load_missing("./test/fullFrame/49.txt")
 matrix = 1 - matrix.astype(int)
 xselect = [x*3 for x in range(41)]
 matrix = matrix[:, xselect]

@@ -6,7 +6,6 @@ prerequisite:
 
 algorithms folder contains the:
 
-	- PCA_R2 re-implemented in Python (https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0152616)
 	- our LWPCA and LWPCA for missing whole frame
 
 Data and parameter before runing:
@@ -27,12 +26,17 @@ Data and parameter before runing:
 		- save_dir = "C:/Users/nvmnghia/Desktop/weightPCA/list_result/" (indicate the wanted location for returned result)
 		- default_test_link = "./test.txt" (indicate the test location in case of wrong test_link)
 
-Run multiple test
+Generate test
 
-	main.py: this file run multiple test in test_link
+	generate_mm_ff.py: this file generate whole frames test case
+	generate_mm_multiple.py: this file generate multiple missing marker test case
+	generate_mm_single.py: this file generate single missing marker test case
 		
 	
-Genrerate missing matrix:
+
+Run multiple test
+
+	main_LWPCA.py: our example for running LWPCA
+	main_LWPCAwholeFrames.py: our example for running LWPCA on missing whole frames test case
 		
-		- generate_mm_single.py (generate a single specific missing marker in the testing sample)
-		- generate_mm_multiple.py (generate multiple missing markers in the testing sample)
+	
