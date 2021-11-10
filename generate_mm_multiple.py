@@ -5,9 +5,10 @@ from arguments import arg
 import sys
 import random
 from datetime import datetime
+import os
 
 def generate_missing_joint_gap(n, m, number_gap):
-	frames = 120
+	frames = 370
 	matrix = np.ones((n,m))
 	joints = np.arange(m//3 - 1)
 	np.random.shuffle(joints)
@@ -39,7 +40,7 @@ def generate_missing_joint_gap(n, m, number_gap):
 
 def process_gap_missing():
 	test_location = arg.test_link
-	gaps = [3]
+	gaps = [3, 6, 9]
 	test_reference = arg.missing_index
 	sample = np.copy(Tracking3D[test_reference[0]:test_reference[1]])
 
@@ -56,6 +57,6 @@ def process_gap_missing():
 
 if __name__ == '__main__':
 
-	Tracking3D, _  = read_tracking_data3D_v2(arg.data_link)
+	Tracking3D, _  = read_tracking_data3D(arg.data_link)
 	Tracking3D = Tracking3D.astype(float)
 	process_gap_missing()

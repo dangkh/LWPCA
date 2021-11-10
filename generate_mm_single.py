@@ -5,8 +5,9 @@ from arguments import arg
 import sys
 import random
 from datetime import datetime
+import os
 
-def generate_missing_joint_gap(n, m):
+def generate_missing_joint_gap(n, m, joint = -1):
 	LSHO = 9
 	LKNE = 28 
 	LWA = 14
@@ -20,8 +21,10 @@ def generate_missing_joint_gap(n, m):
 	print('start : ')
 	while counter < total_numgap:
 		print("start_missing_frame: ",start_missing_frame, ";")
-		missing_joint = np.random.randint(0,m//3)
-		# missing_joint = LWA
+		if joint == -1:
+			missing_joint = np.random.randint(0,m//3)
+		else:
+			missing_joint = joint
 		for frame in range(start_missing_frame, start_missing_frame+frames):
 			matrix[frame, missing_joint*3] = 0
 			matrix[frame, missing_joint*3+1] = 0
@@ -40,7 +43,7 @@ def generate_missing_joint_gap(n, m):
 def process_gap_missing():
 	
 	test_location = arg.test_link
-	gaps = [1]
+	gaps = {"LSHO": 9, "LKNE": 28, "LWA": 14, "random": -1}
 	test_reference = arg.missing_index
 	sample = np.copy(Tracking3D[test_reference[0]:test_reference[1]])
 
@@ -48,15 +51,14 @@ def process_gap_missing():
 		link = test_location+ str(gap)+"/"
 		if not os.path.isdir(link):
 			os.mkdir(link)
-			
 		for times in range(50):
 			print("current: ", times)
-			missing_matrix = generate_missing_joint_gap(sample.shape[0], sample.shape[1])		
-			np.savetxt(test_location+"/"+str(gaps[0])+"/"+str(times)+ ".txt", missing_matrix, fmt = "%d")
+			missing_matrix = generate_missing_joint_gap(sample.shape[0], sample.shape[1], gaps[gap])		
+			np.savetxt(test_location+"/"+str(gap)+"/"+str(times)+ ".txt", missing_matrix, fmt = "%d")
 	return 
 
 if __name__ == '__main__':
 
-	Tracking3D, _  = read_tracking_data3D_v2(arg.data_link)
+	Tracking3D, _  = read_tracking_data3D(arg.data_link)
 	Tracking3D = Tracking3D.astype(float)
 	process_gap_missing()

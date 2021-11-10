@@ -12,7 +12,7 @@ class arguments(argparse.Namespace):
     missing_index = [50, 450]
     # current result
     inner_testing = [[250, 650], [450, 850], [1050, 1450], [1450, 1850]]
-    data_link = "./data3D/CMU2.txt"
+    data_link = "./data3D/135_02.txt"
     
     collection_link = ["./data3D/135_01.txt", "./data3D/135_03.txt"]
     outter_testing = [[1450, 1850], [1450, 1850]]

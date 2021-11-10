@@ -69,7 +69,7 @@ def process_hub(data=None):
             
                 timecounter = datetime.now()
                 A1_star = LWPCA_wholeFrame(np.copy(dataCollection), np.copy(A1zero))
-                value = np.around(calculate_mae_matrix(
+                value = np.around(calculate_mse_matrix(
                     A1[np.where(A1zero == 0)] - A1_star[np.where(A1zero == 0)]), decimals=17)
                 print(str(datetime.now() - timecounter))
 

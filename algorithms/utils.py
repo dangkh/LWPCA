@@ -325,7 +325,7 @@ def get_list_frameidx_patch(K_patch, fix_leng, frame_start):
     return list_frameidx_patch
 
 
-def calculate_mae_matrix(X):
+def calculate_mse_matrix(X):
     error_sum = np.sum(np.abs(X))
     mse = np.sum(np.square(X))
     # print("debug")
