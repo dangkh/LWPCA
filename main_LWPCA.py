@@ -71,11 +71,11 @@ def process_hub(data=None):
                 # np.savetxt("missing_matrix.txt", A1zero, fmt = "%.2f")
                 
                 timecounter = datetime.now()
-                A1_star8 = WPCA_local(np.copy(dataCollection), np.copy(A1zero))
-                value = np.around(calculate_mae_matrix(
-                    A1[np.where(A1zero == 0)] - A1_star8[np.where(A1zero == 0)]), decimals=17)
+                A1_star = WPCA_local(np.copy(dataCollection), np.copy(A1zero))
+                value = np.around(calculate_mse_matrix(
+                    A1[np.where(A1zero == 0)] - A1_star[np.where(A1zero == 0)]), decimals=17)
                 print(str(datetime.now() - timecounter))
-                # np.savetxt("interpolate.txt", A1_star8, fmt = "%.2f")
+                # np.savetxt("interpolate.txt", A1_star, fmt = "%.2f")
 
                 resCF.append(value)
             print("**************************************** END ****************************************")

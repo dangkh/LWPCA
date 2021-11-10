@@ -19,12 +19,13 @@ def createWeightCol(weight, marker, markerwithgap):
 		if (x[1] > 0) and (x[0] not in markerwithgap):
 			listClosest.append(x[0])
 	# CMU 2000
-	weightScale = 500
+	# HDM 500
+	weightScale = 2000
 	MMweight = 0.02
 	weight_vector = np.exp(np.divide(-np.square(weight),(2*np.square(weightScale))))
 	weight_vector[markerwithgap] = 0.001
 	weight_vector[marker] = MMweight
-	weight_vector[listClosest] = 1
+	weight_vector[listClosest[0]] = 1
 	return weight_vector
 
 
